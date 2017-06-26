@@ -1,10 +1,10 @@
-<app-header></app-header>
+<app-header (selection)="onSelection($event)" ></app-header>
 
 <div class="contaner">
     <div class="row">
         <div class="col-md-12">
-            <app-recipes></app-recipes>
-            <app-shopping-list></app-shopping-list>
+            <app-recipes *ngIf="displayRecipe"></app-recipes>
+            <app-shopping-list *ngIf="!displayRecipe" ></app-shopping-list>
         </div>
     </div>
 </div>
