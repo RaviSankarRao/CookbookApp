@@ -8,8 +8,8 @@ export class ShoppingListService {
     ingredientsChanged = new EventEmitter<Ingredient[]>();
 
     private ingredients : Ingredient[] = [
-        new Ingredient('apples', 5),
-        new Ingredient('tomatoes', 10)
+        // new Ingredient('apples', 5),
+        // new Ingredient('tomatoes', 10)
     ];
 
     getIngredients(): Ingredient[] {
@@ -18,6 +18,18 @@ export class ShoppingListService {
 
     addIngredent(item: Ingredient) {
         this.ingredients.push(item);
+        this.ingredientsChanged.emit(this.ingredients.slice());
+    }
+
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
+        
+        // for (let ingredient of ingredients) {
+        //     this.addIngredent(ingredient);
+        // }
+
+        // ... => spread operator => used to push an array into existing
+        this.ingredients.push(...ingredients);
+
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
 
